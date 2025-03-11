@@ -6,13 +6,15 @@ function TutorForm({ addTutor }) {
     nome: "",
     documento: "",
     email: "",
-    rua: "",
-    number: "",
-    complement: "",
-    neighborhood: "",
-    city: "",
-    state: "",
-    cep: "",
+    endereco: {
+      estado: "",
+      cep: "",
+      cidade: "",
+      bairro: "",
+      rua: "",
+      numero: "",
+      complemento: "",
+    },
   });
 
   const handleChange = (e) => {
