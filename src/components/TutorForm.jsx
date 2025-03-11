@@ -25,7 +25,7 @@ function TutorForm({ addTutor }) {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/tutors",
+        "http://localhost:5000/api/tutores",
         formData
       );
       addTutor(response.data);

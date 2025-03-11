@@ -12,7 +12,7 @@ function ListagemTutor() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/tutors")
+      .get("http://localhost:5000/api/tutores")
       .then((response) => {
         setTutors(response.data);
       })
