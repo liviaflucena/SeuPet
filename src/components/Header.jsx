@@ -8,6 +8,9 @@ function Header() {
       <nav>
         <Link to="/listagem-tutor">Tutores</Link>
       </nav>
+      <nav>
+        <Link to="/listagem-animal">Animais</Link>
+      </nav>
     </header>
   );
 }
