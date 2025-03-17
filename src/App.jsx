@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
 import ListagemTutor from "./views/ListagemTutor";
 import ListagemAnimais from "./views/ListagemAnimais";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (

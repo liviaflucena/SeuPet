@@ -1,3 +1,4 @@
+// ListagemAnimais.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -37,18 +38,25 @@ function ListagemAnimais() {
   return (
     <Layout>
       <div>
-        <h2>Animais cadastrados</h2>
-        <div>
+        <h2 className="mb-4">Animais Cadastrados</h2>
+        <div className="row">
           {animals.map((animal) => (
-            <AnimalCard key={animal.id} animal={animal} />
+            <div key={animal.id} className="col-md-4">
+              <AnimalCard animal={animal} />
+            </div>
           ))}
         </div>
-        <button onClick={() => setIsModalOpen(true)}>Cadastro de Animal</button>
+        <button
+          className="btn btn-primary mt-3"
+          onClick={() => setIsModalOpen(true)}
+        >
+          Cadastro de Animal
+        </button>
         <Link to="/">
-          <button>Home</button>
+          <button className="btn btn-secondary mt-3 ms-2">Home</button>
         </Link>
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <h2>Cadastro de Animal</h2>
+          <h2 className="mb-3">Cadastro de Animal</h2>
           <AnimalForm addAnimal={addAnimal} tutors={tutors} />
         </Modal>
       </div>

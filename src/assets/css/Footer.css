@@ -1,4 +1,13 @@
+/* Footer.css */
 .contact-link {
   display: block;
   margin-bottom: 5px;
+  color: var(--header-footer-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
+
+.contact-link:hover {
+  color: var(--secondary-color);
+}
+

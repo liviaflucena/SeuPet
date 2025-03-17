@@ -1,12 +1,20 @@
-import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+// Layout.jsx
+import React from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Layout({ children }) {
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      {/* Cabeçalho fixo no topo */}
       <Header />
-      <main style={{ padding: "20px" }}>{children}</main>
+
+      {/* Conteúdo principal que se expande */}
+      <div style={{ flex: '1' }}>
+        {children}
+      </div>
+
+      {/* Rodapé no fim da página */}
       <Footer />
     </div>
   );

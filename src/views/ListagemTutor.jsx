@@ -1,3 +1,4 @@
+// ListagemTutor.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -29,19 +30,26 @@ function ListagemTutor() {
   return (
     <Layout>
       <div>
-        <h2>Tutores Cadastrados</h2>
-        <div>
+        <h2 className="mb-4">Tutores Cadastrados</h2>
+        <div className="row">
           {tutors.map((tutor) => (
-            <TutorCard key={tutor.id} tutor={tutor} />
+            <div key={tutor.id} className="col-md-4">
+              <TutorCard tutor={tutor} />
+            </div>
           ))}
         </div>
-        <button onClick={() => setIsModalOpen(true)}>Cadastro de Tutor</button>
+        <button
+          className="btn btn-primary mt-3"
+          onClick={() => setIsModalOpen(true)}
+        >
+          Cadastro de Tutor
+        </button>
         <Link to="/">
-          <button>Home</button>
+          <button className="btn btn-secondary mt-3 ms-2">Home</button>
         </Link>
 
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <h2>Cadastro de Tutor</h2>
+          <h2 className="mb-3">Cadastro de Tutor</h2>
           <TutorForm addTutor={addTutor} />
         </Modal>
       </div>

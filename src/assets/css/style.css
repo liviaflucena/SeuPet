@@ -1,11 +1,28 @@
 :root {
-  --primary-color: #4a90e2;
-  --secondary-color: #50e3c2;
-  --background-color: #f4f4f4;
-  --header-footer-bg: #333;
-  --header-footer-text: #fff;
+  /* Fundo principal do site (creme claro) */
+  --background-color: #F5F2E0;
+  
+  /* Verde pastel aproximado do contorno da logo */
+  --primary-pastel-green: #6c8181;
+
+  /* Texto em cor clara para contrastar com o verde */
+  --text-on-green: #FFFFFF;
+
+  /* Você pode ajustar conforme necessário */
   --font-family: "Arial", sans-serif;
 }
+
+/* Exemplo de uso global */
+body {
+  background-color: var(--background-color);
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+}
+ 
+
+
+
 
 * {
   margin: 0;
@@ -20,60 +37,13 @@ body {
   line-height: 1.6;
 }
 
-/* Header */
-header {
-  background-color: var(--header-footer-bg);
-  color: var(--header-footer-text);
-  padding: 20px;
-  text-align: center;
+/* Customização dos formulários */
+form .mb-3 {
+  margin-bottom: 15px;
 }
 
-header h1 {
-  margin-bottom: 10px;
-}
-
-header nav a {
-  color: var(--header-footer-text);
-  text-decoration: none;
-  margin: 0 10px;
+form label {
   font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-header nav a:hover {
-  color: var(--secondary-color);
-}
-
-/* Main */
-main {
-  padding: 20px;
-  min-height: 80vh;
-}
-
-/* Footer */
-footer {
-  background-color: var(--header-footer-bg);
-  color: var(--header-footer-text);
-  text-align: center;
-  padding: 15px;
-  margin-top: 20px;
-}
-
-footer .contact-links a {
-  display: block;
-  color: var(--header-footer-text);
-  margin-bottom: 5px;
-  text-decoration: none;
-}
-
-/* Tutor Card */
-.tutor-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 10px 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Modal */
@@ -87,6 +57,7 @@ footer .contact-links a {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1050;
 }
 
 .modal-content {
@@ -100,36 +71,15 @@ footer .contact-links a {
   overflow-y: auto;
 }
 
-/* Formulários */
-form div {
-  margin-bottom: 10px;
-}
-
-form label {
+/* Links de contato no Footer */
+.contact-link {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  color: var(--header-footer-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-form input[type="text"],
-form input[type="email"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Botões */
-button {
-  background-color: var(--primary-color);
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: var(--secondary-color);
+.contact-link:hover {
+  color: var(--secondary-color);
 }
