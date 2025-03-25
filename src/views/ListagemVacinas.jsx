@@ -29,7 +29,7 @@ function ListagemVacinas() {
   return (
     <Layout>
       <div>
-        <h2 className="mb-4">Vacinas Cadastrados</h2>
+        <h2 className="mb-4">Vacinas Cadastradas</h2>
         <div className="row">
           {vacinas.map((vacina) => (
             <div key={vacina.id} className="col-md-4">
