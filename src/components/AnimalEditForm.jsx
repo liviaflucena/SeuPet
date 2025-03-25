@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import "../assets/css/style.css";
 
-function AnimalForm({ addAnimal, tutors }) {
+function AnimalEditForm({ animal, tutors, onConfirm, onCancel }) {
   const [formData, setFormData] = useState({
     tutorId: "",
-    nome: "",
+    name: "",
     dataNascimento: "",
     especie: "",
     raca: "",
@@ -14,39 +13,26 @@ function AnimalForm({ addAnimal, tutors }) {
     pelagem: "",
   });
 
+  useEffect(() => {
+    setFormData({
+      tutorId: animal.tutor_id ? animal.tutor_id.toString() : "",
+      name: animal.name || "",
+      dataNascimento: animal.dataNascimento || "",
+      especie: animal.especie || "",
+      raca: animal.raca || "",
+      peso: animal.peso || "",
+      porte: animal.porte || "",
+      pelagem: animal.pelagem || "",
+    });
+  }, [animal]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const cadastro = Date.now();
-      const newAnimalData = {
-        ...formData,
-        cadastro,
-        tutor_id: Number(formData.tutorId),
-      };
-
-      const response = await axios.post(
-        "http://localhost:5000/api/animais",
-        newAnimalData
-      );
-      addAnimal(response.data);
-
-      setFormData({
-        tutorId: "",
-        nome: "",
-        dataNascimento: "",
-        especie: "",
-        raca: "",
-        peso: "",
-        porte: "",
-        pelagem: "",
-      });
-    } catch (error) {
-      console.error("Erro ao cadastrar animal:", error);
-    }
+    onConfirm(formData);
   };
 
   return (
@@ -137,9 +123,12 @@ function AnimalForm({ addAnimal, tutors }) {
           onChange={handleChange}
         />
       </div>
-      <button type="submit">Adicionar Animal</button>
+      <button type="submit">Confirmar Edição</button>
+      <button type="button" onClick={onCancel}>
+        Cancelar
+      </button>
     </form>
   );
 }
 
-export default AnimalForm;
+export default AnimalEditForm;

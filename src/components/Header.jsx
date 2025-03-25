@@ -9,6 +9,7 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+
 function Header() {
   return (
     <Navbar
@@ -27,7 +28,7 @@ function Header() {
             className="d-inline-block align-top"
             alt="SeuPet Logo"
           />
-          {' '}
+          {' '} 
           SeuPet
         </Navbar.Brand>
 
@@ -38,6 +39,7 @@ function Header() {
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/listagem-tutor">Tutores</Nav.Link>
             <Nav.Link as={Link} to="/listagem-animal">Animais</Nav.Link>
+            <Nav.Link as={Link} to="/listagem-vacina">Vacinas</Nav.Link>
             <NavDropdown title="Mais" id="navbarScrollingDropdown">
               <NavDropdown.Item as={Link} to="/sobre">
                 Sobre

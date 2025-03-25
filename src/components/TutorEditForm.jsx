@@ -1,50 +1,42 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import "../assets/css/style.css";
 
-
-function TutorForm({ addTutor }) {
+function TutorEditForm({ tutor, onConfirm, onCancel }) {
   const [formData, setFormData] = useState({
     nome: "",
     documento: "",
     email: "",
-    endereco: {
-      estado: "",
-      cep: "",
-      cidade: "",
-      bairro: "",
-      rua: "",
-      numero: "",
-      complemento: "",
-    },
+    rua: "",
+    numero: "",
+    complemento: "",
+    bairro: "",
+    cidade: "",
+    estado: "",
+    cep: "",
   });
+
+  useEffect(() => {
+    setFormData({
+      nome: tutor.nome || "",
+      documento: tutor.documento || "",
+      email: tutor.email || "",
+      rua: tutor.endereco.rua || "",
+      numero: tutor.endereco.numero || "",
+      complemento: tutor.endereco.complemento || "",
+      bairro: tutor.endereco.bairro || "",
+      cidade: tutor.endereco.cidade || "",
+      estado: tutor.endereco.estado || "",
+      cep: tutor.endereco.cep || "",
+    });
+  }, [tutor]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/tutores",
-        formData
-      );
-      addTutor(response.data);
-      setFormData({
-        nome: "",
-        documento: "",
-        email: "",
-        rua: "",
-        numero: "",
-        complemento: "",
-        bairro: "",
-        cidade: "",
-        pais: "",
-        cep: "",
-      });
-    } catch (error) {
-      console.error("Erro ao cadastrar tutor:", error);
-    }
+    onConfirm(formData);
   };
 
   return (
@@ -80,6 +72,7 @@ function TutorForm({ addTutor }) {
         />
       </div>
       <fieldset>
+        <legend>Endereço</legend>
         <div>
           <label htmlFor="rua">Rua:</label>
           <input
@@ -151,9 +144,12 @@ function TutorForm({ addTutor }) {
           />
         </div>
       </fieldset>
-      <button type="submit">Adicionar Tutor</button>
+      <button type="submit">Confirmar Edição</button>
+      <button type="button" onClick={onCancel}>
+        Cancelar
+      </button>
     </form>
   );
 }
 
-export default TutorForm;
+export default TutorEditForm;

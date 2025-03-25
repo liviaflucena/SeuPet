@@ -11,6 +11,7 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+
 function Home() {
   // Estado para controlar a exibição do modal
   const [showModal, setShowModal] = useState(false);
@@ -22,84 +23,75 @@ function Home() {
   return (
     <Layout>
       {/* Carrossel de Imagens */}
-      <Carousel className="mb-4">
+      <Carousel className="mb-4 carousel-container" >
         <Carousel.Item>
           <img
-            className="d-block w-100"
-            src="https://via.placeholder.com/800x400?text=Bem-vindo+ao+SeuPet"
+            className="d-block"
+            src="https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Bem-vindo ao SeuPet"
           />
           <Carousel.Caption
             style={{
-              backgroundColor: 'rgba(157, 175, 159, 0.6)', // Verde pastel semitransparente
+              backgroundColor: 'rgba(120, 155, 159, 0.6)',
               padding: '10px',
-              borderRadius: '5px'
+              borderRadius: '5px',
+              bottom: '120px'
+              
             }}
           >
             <h3 style={{ color: '#FFF' }}>Bem-vindo ao SeuPet</h3>
             <p style={{ color: '#FFF' }}>
               Gerencie as informações do seu pet de forma simples e prática.
             </p>
-            {/* Botão que abre o Modal */}
-            <Button variant="light" onClick={handleOpenModal}>
-              Saiba Mais
-            </Button>
           </Carousel.Caption>
         </Carousel.Item>
 
         <Carousel.Item>
           <img
-            className="d-block w-100"
-            src="https://via.placeholder.com/800x400?text=Cuidado+e+Carinho"
+            className="d-block"
+            src="https://images.unsplash.com/photo-1606098216818-40939b7c98ad?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Cuidado e Carinho"
           />
           <Carousel.Caption
             style={{
-              backgroundColor: 'rgba(157, 175, 159, 0.6)',
+              backgroundColor: 'rgba(120, 155, 159, 0.6)',
               padding: '10px',
-              borderRadius: '5px'
+              borderRadius: '5px',
+              bottom: '120px'
             }}
           >
             <h3 style={{ color: '#FFF' }}>Cuidado e Carinho</h3>
             <p style={{ color: '#FFF' }}>
               Oferecemos os melhores serviços para o seu pet.
             </p>
-            <Button variant="light" onClick={handleOpenModal}>
-              Saiba Mais
-            </Button>
           </Carousel.Caption>
         </Carousel.Item>
 
         <Carousel.Item>
           <img
-            className="d-block w-100"
-            src="https://via.placeholder.com/800x400?text=Servi%C3%A7os+de+Excel%C3%AAncia"
+            className="d-block"
+            src="https://images.unsplash.com/photo-1545529468-42764ef8c85f?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Serviços de Excelência"
           />
           <Carousel.Caption
             style={{
-              backgroundColor: 'rgba(157, 175, 159, 0.6)',
+              backgroundColor: 'rgba(120, 155, 159, 0.6)',
               padding: '10px',
-              borderRadius: '5px'
+              borderRadius: '5px',
+              bottom: '120px'
             }}
           >
             <h3 style={{ color: '#FFF' }}>Serviços de Excelência</h3>
             <p style={{ color: '#FFF' }}>
               Agende remédios, vacinas e muito mais.
             </p>
-            <Button variant="light" onClick={handleOpenModal}>
-              Saiba Mais
-            </Button>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
 
       {/* Seção de Cards (Serviços) */}
       <Container>
-        <h2
-          className="mb-4 text-center"
-          style={{ color: '#000' }} // Verde pastel da logo
-        >
+        <h2 className="mb-4 text-center" style={{ color: '#000' }}>
           Nossos Serviços
         </h2>
         <Row>
@@ -107,22 +99,19 @@ function Home() {
             <Card>
               <Card.Img
                 variant="top"
-                src="https://via.placeholder.com/300x200?text=Cadastro+de+Animais"
+                src="https://images.unsplash.com/photo-1575470887806-b77feadf85fa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Cadastro de Animais"
               />
               <Card.Body>
-                <Card.Title style={{ color: '#000' }}>
-                  Cadastro de Animais
-                </Card.Title>
+                <Card.Title style={{ color: '#000' }}>Cadastro de Animais</Card.Title>
                 <Card.Text>
-                  Cadastre seus animais e acompanhe todas as informações
-                  importantes.
+                  Cadastre seus animais e acompanhe todas as informações.
                 </Card.Text>
                 <Button
                   as={Link}
                   to="/listagem-animal"
                   style={{
-                    backgroundColor: ' #8dadad',
+                    backgroundColor: '#8dadad',
                     border: 'none'
                   }}
                 >
@@ -136,13 +125,11 @@ function Home() {
             <Card>
               <Card.Img
                 variant="top"
-                src="https://via.placeholder.com/300x200?text=Cadastro+de+Tutores"
+                src="https://images.unsplash.com/photo-1579119134757-5c38803f34fc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Cadastro de Tutores"
               />
               <Card.Body>
-                <Card.Title style={{ color: '#000' }}>
-                  Cadastro de Tutores
-                </Card.Title>
+                <Card.Title style={{ color: '#000' }}>Cadastro de Tutores</Card.Title>
                 <Card.Text>
                   Mantenha todos os dados dos tutores organizados e atualizados.
                 </Card.Text>
@@ -150,7 +137,7 @@ function Home() {
                   as={Link}
                   to="/listagem-tutor"
                   style={{
-                    backgroundColor: ' #8dadad',
+                    backgroundColor: '#8dadad',
                     border: 'none'
                   }}
                 >
@@ -164,21 +151,19 @@ function Home() {
             <Card>
               <Card.Img
                 variant="top"
-                src="https://via.placeholder.com/300x200?text=Agendamento+de+Consulta"
+                src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Agendamento de Vacinas"
               />
               <Card.Body>
-                <Card.Title style={{ color: '#000' }}>
-                  Agendamento
-                </Card.Title>
+                <Card.Title style={{ color: '#000' }}>Agendamento</Card.Title>
                 <Card.Text>
                   Agende remédios e vacinas para garantir a saúde do seu pet.
                 </Card.Text>
                 <Button
                   as={Link}
-                  to="/agendamento"
+                  to="/listagem-vacinas"
                   style={{
-                    backgroundColor:' #8dadad',
+                    backgroundColor: '#8dadad',
                     border: 'none'
                   }}
                 >
@@ -196,9 +181,7 @@ function Home() {
           <Modal.Title>Informações Adicionais</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Aqui você pode incluir mais detalhes sobre a aplicação SeuPet, 
-          explicar funcionalidades extras ou até oferecer links para 
-          páginas de cadastro e agendamento.
+          Aqui você pode incluir mais detalhes sobre a aplicação SeuPet, explicar funcionalidades extras ou até oferecer links para páginas de cadastro e agendamento.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseModal}>

@@ -1,40 +1,39 @@
-// ListagemTutor.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import TutorCard from "../components/TutorCard";
-import TutorForm from "../components/TutorForm";
+import VacinaCard from "../components/VacinaCard";
+import VacinaForm from "../components/VacinaForm";
 import Modal from "../components/Modal";
 import Layout from "../templates/Layout";
 
-function ListagemTutor() {
-  const [tutors, setTutors] = useState([]);
+function ListagemVacinas() {
+  const [vacinas, setVacina] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/tutores")
+      .get("http://localhost:5000/api/vacinas")
       .then((response) => {
-        setTutors(response.data);
+        setVacina(response.data);
       })
       .catch((error) => {
-        console.error("Erro ao buscar tutores:", error);
+        console.error("Erro ao buscar vacinas:", error);
       });
   }, []);
 
-  const addTutor = (newTutor) => {
-    setTutors([...tutors, newTutor]);
+  const addVacina = (newVacina) => {
+    setVacina([...vacinas, newVacina]);
     setIsModalOpen(false);
   };
 
   return (
     <Layout>
       <div>
-        <h2 className="mb-4">Tutores Cadastrados</h2>
+        <h2 className="mb-4">Vacinas Cadastrados</h2>
         <div className="row">
-          {tutors.map((tutor) => (
-            <div key={tutor.id} className="col-md-4">
-              <TutorCard tutor={tutor} />
+          {vacinas.map((vacina) => (
+            <div key={vacina.id} className="col-md-4">
+              <VacinaCard vacina={vacina} />
             </div>
           ))}
         </div>
@@ -42,19 +41,19 @@ function ListagemTutor() {
           className="btn btn-secondary mt-3 ms-2"
           onClick={() => setIsModalOpen(true)}
         >
-          Cadastro de Tutor
+          Cadastro de Vacina
         </button>
         <Link to="/">
           <button className="btn btn-secondary mt-3 ms-2">Home</button>
         </Link>
 
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <h2 className="mb-3">Cadastro de Tutor</h2>
-          <TutorForm addTutor={addTutor} />
+          <h2 className="mb-3">Cadastro de Vacina</h2>
+          <VacinaForm addVacina={addVacina} />
         </Modal>
       </div>
     </Layout>
   );
 }
 
-export default ListagemTutor;
+export default ListagemVacinas;

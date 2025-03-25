@@ -47,8 +47,8 @@ function ListagemAnimais() {
           ))}
         </div>
         <button
-          className="btn btn-primary mt-3"
-          onClick={() => setIsModalOpen(true)}
+          className="btn btn-secondary mt-3 ms-2" 
+          onClick={() => setIsModalOpen(true)} 
         >
           Cadastro de Animal
         </button>
