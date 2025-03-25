@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import VacinaCard from "../components/VacinaCard";
 import VacinaForm from "../components/VacinaForm";
+import VacinaEditForm from "../components/VacinaEditForm";
 import Modal from "../components/Modal";
 import Layout from "../templates/Layout";
 
 function ListagemVacinas() {
   const [vacinas, setVacina] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedVacina, setSelectedVacina] = useState(null);
 
   useEffect(() => {
     axios
@@ -26,6 +29,35 @@ function ListagemVacinas() {
     setIsModalOpen(false);
   };
 
+  const handleDeleteVacina = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/vacinas/${id}`);
+      setVacina(vacinas.filter(vacina => vacina.id !== id));
+    } catch (error) {
+      console.error("Erro ao excluir vacina:", error);
+    }
+  };
+
+  const handleEditVacina = (vacina) => {
+    setSelectedVacina(vacina);
+    setIsEditModalOpen(true);
+  };
+
+  const handleUpdateVacina = async (formData) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/api/vacinas/${selectedVacina.id}`,
+        formData
+      );
+      setVacina(vacinas.map(v => 
+        v.id === selectedVacina.id ? response.data : v
+      ));
+      setIsEditModalOpen(false);
+    } catch (error) {
+      console.error("Erro ao atualizar vacina:", error);
+    }
+  };
+
   return (
     <Layout>
       <div>
@@ -33,7 +65,7 @@ function ListagemVacinas() {
         <div className="row">
           {vacinas.map((vacina) => (
             <div key={vacina.id} className="col-md-4">
-              <VacinaCard vacina={vacina} />
+              <VacinaCard vacina={vacina} onEdit={handleEditVacina} onDelete={handleDeleteVacina}/>
             </div>
           ))}
         </div>
@@ -51,6 +83,18 @@ function ListagemVacinas() {
           <h2 className="mb-3">Cadastro de Vacina</h2>
           <VacinaForm addVacina={addVacina} />
         </Modal>
+
+        <Modal isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)}>
+          <h2 className="mb-3">Editar Vacina</h2>
+          {selectedVacina && (
+            <VacinaEditForm 
+              vacina={selectedVacina}
+              onConfirm={handleUpdateVacina}
+              onCancel={() => setIsEditModalOpen(false)}
+            />
+          )}
+        </Modal>
+        
       </div>
     </Layout>
   );

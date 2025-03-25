@@ -11,7 +11,7 @@ function VacinaEditForm({ vacina, onConfirm, onCancel }) {
 
   useEffect(() => {
     setFormData({
-      nome_vacina: vacina.nome_ || "",
+      nome_vacina: vacina.nome_vacina || "",
       fabricante: vacina.fabricante || "",
       data_validade: vacina.data_validade || "",
       lote: vacina.lote || "",
@@ -19,7 +19,7 @@ function VacinaEditForm({ vacina, onConfirm, onCancel }) {
   }, [vacina]);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.nome_vacina]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -30,11 +30,11 @@ function VacinaEditForm({ vacina, onConfirm, onCancel }) {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="nome">Nome da Vacina:</label>
+        <label htmlFor="nome_vacina">Nome da Vacina:</label>
         <input
           type="text"
-          id="nome"
-          name="nome"
+          id="nome_vacina"
+          name="nome_vacina"
           value={formData.nome_vacina}
           onChange={handleChange}
         />
@@ -50,11 +50,11 @@ function VacinaEditForm({ vacina, onConfirm, onCancel }) {
         />
       </div>
       <div>
-        <label htmlFor="data">Data de Validade:</label>
+        <label htmlFor="data_validade">Data de Validade:</label>
         <input
           type="date"
-          id="data"
-          name="data"
+          id="data_validade"
+          name="data_validade"
           value={formData.data_validade}
           onChange={handleChange}
         />

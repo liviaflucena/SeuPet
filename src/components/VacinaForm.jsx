@@ -12,7 +12,7 @@ function VacinaForm({ addVacina }) {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.nome_vacina]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -40,8 +40,8 @@ function VacinaForm({ addVacina }) {
         <label htmlFor="nome">Nome da Vacina:</label>
         <input
           type="text"
-          id="nome"
-          name="nome"
+          id="nome_vacina"
+          name="nome_vacina"
           value={formData.nome_vacina}
           onChange={handleChange}
         />
@@ -60,8 +60,8 @@ function VacinaForm({ addVacina }) {
         <label htmlFor="data">Data de Validade:</label>
         <input
           type="date"
-          id="data"
-          name="data"
+          id="data_validade"
+          name="data_validade"
           value={formData.data_validade}
           onChange={handleChange}
         />

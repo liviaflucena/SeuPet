@@ -4,7 +4,7 @@ import "../assets/css/style.css";
 function AnimalEditForm({ animal, tutors, onConfirm, onCancel }) {
   const [formData, setFormData] = useState({
     tutorId: "",
-    name: "",
+    nome: "",
     dataNascimento: "",
     especie: "",
     raca: "",
@@ -15,8 +15,9 @@ function AnimalEditForm({ animal, tutors, onConfirm, onCancel }) {
 
   useEffect(() => {
     setFormData({
-      tutorId: animal.tutor_id ? animal.tutor_id.toString() : "",
-      name: animal.name || "",
+      // tutorId: animal.tutor_id ? animal.tutor_id.toString() : "",
+      tutorId: animal.tutor_id?.toString() || "",
+      nome: animal.nome || "",
       dataNascimento: animal.dataNascimento || "",
       especie: animal.especie || "",
       raca: animal.raca || "",
@@ -32,7 +33,13 @@ function AnimalEditForm({ animal, tutors, onConfirm, onCancel }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onConfirm(formData);
+    const cadastro = animal.cadastro;
+    const updatedData = {
+      ...formData,
+      cadastro,
+      tutor_id: Number(formData.tutorId),
+    };
+    onConfirm(updatedData);
   };
 
   return (
@@ -40,14 +47,14 @@ function AnimalEditForm({ animal, tutors, onConfirm, onCancel }) {
       <div>
         <label htmlFor="tutorId">Tutor:</label>
         <select
-          nome="tutorId"
+          name="tutorId"
           id="tutorId"
-          value={formData.tutor_id}
+          value={formData.tutorId}
           onChange={handleChange}
         >
           <option value="">Selecione um tutor</option>
           {tutors.map((tutor) => (
-            <option key={tutor.id} value={tutor.id}>
+            <option key={tutor.id} value={tutor.id.toString()}>
               {tutor.nome}
             </option>
           ))}

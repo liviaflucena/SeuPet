@@ -29,7 +29,7 @@ function AnimalForm({ addAnimal, tutors }) {
       };
 
       const response = await axios.post(
-        "http://localhost:5000/api/animais",
+        `http://localhost:5000/api/tutores/${formData.tutorId}/animais`,
         newAnimalData
       );
       addAnimal(response.data);
@@ -54,9 +54,9 @@ function AnimalForm({ addAnimal, tutors }) {
       <div>
         <label htmlFor="tutorId">Tutor:</label>
         <select
-          nome="tutorId"
+          name="tutorId"
           id="tutorId"
-          value={formData.tutor_id}
+          value={formData.tutorId}
           onChange={handleChange}
         >
           <option value="">Selecione um tutor</option>
